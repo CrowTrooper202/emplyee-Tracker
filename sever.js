@@ -22,7 +22,7 @@ const db = mysql.createConnection(
   console.log(`Connected to the company_db database.`)
 );
 
-// Query database
+
 db.query('SELECT * FROM students', function (err, results) {
   if (err) {
     throw err;
@@ -30,7 +30,7 @@ db.query('SELECT * FROM students', function (err, results) {
   console.log(results);
 });
 
-// Default response for any other request (Not Found)
+
 app.use((req, res) => {
   res.status(404).end();
 });
