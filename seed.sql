@@ -15,8 +15,8 @@ VALUES
 ('Account manager', 60000, 5)
 ('Legal Team Lead', 155000, 4)
 ('Lawyer', 134000, 4)
-( 'Shift supervisor', 60000, 3)
-( 'Security Guard', 50000, 3)
+('Shift supervisor', 60000, 3)
+('Security Guard', 50000, 3)
 
 
 
