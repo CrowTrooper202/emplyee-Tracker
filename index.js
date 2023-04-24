@@ -1,4 +1,5 @@
 const inquirer = require('inquirer')
+const mysql = require('mysql2');
 
 inquirer
 .createPromptModule([
@@ -10,3 +11,20 @@ inquirer
     }
     
 ])
+
+
+
+//12-11 lesson use dbquery nested in the switch
+
+switch (data.choices){
+    case 'view all departments':
+        db.query('SELECT * FROM department', function (err, results) {
+            if (err) {
+              throw err;
+            }
+            console.log(results);
+          });
+        break;
+
+
+}

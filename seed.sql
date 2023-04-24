@@ -1,31 +1,34 @@
 INSERT INTO department (id, name)
 VALUES
-(1, 'Sales'),
-(2, 'Engineering'),
-(3, 'Security'),
-(4, 'Legal'),
-(5, 'Finance');
+('Sales'),
+('Engineering'),
+('Security'),
+('Legal'),
+('Finance');
 
-INSERT INTO role (id, title, salary)
+INSERT INTO role (id, title, salary, department_id)
 VALUES
-(1, 'sales Lead', 27000, [])
-(1, 'Salesperson', 20000, [])
-(1, 'Lead Engineer', 146000, [])
-(1, 'Software Engineer',125000, [])
-(1, 'Account manager', 60000, [])
-(1, 'Legal Team Lead', 155000, [])
-(1, 'Lawyer', 134000, [])
-(1, 'Shift supervisor', 60000, [])
-(1, 'Security Guard', 50000, [])
+('sales Lead', 27000, 1)
+('Salesperson', 20000, 1)
+('Lead Engineer', 146000, 2)
+('Software Engineer',125000, 2)
+('Account manager', 60000, 5)
+('Legal Team Lead', 155000, 4)
+('Lawyer', 134000, 4)
+( 'Shift supervisor', 60000, 3)
+( 'Security Guard', 50000, 3)
 
 
-INSERT INTO employee (id, first_name, last_name,manager_id)
+
+INSERT INTO employee (id, first_name, last_name, role_id, manager_id)
 VALUES
-(1, 'John', 'smith',[], 'Jane Doe')
-(1, 'Russel', 'Bell', [], 'Jane Doe')
-(1, 'Myra', 'Estrada', [], 'null')
-(1, 'Wilfrid', 'Hutchinson', [], 'Haley Banks')
-(1, 'Muriel', 'Bowman', [], 'null')
-(1, 'Wally', 'Sherman', [], 'Haley Banks')
-(1, 'Oliver', 'Heath', [], 'Jane Doe')
-(1, 'Pat', 'Gildon', [], 'null')
+('John', 'smith',1 , 0)
+('Russel', 'Bell', 2, 1)
+('Myra', 'Estrada', 3, 0)
+('Wilfrid', 'Hutchinson',4, 3)
+('Muriel', 'Bowman', 5, 0)
+('Wally', 'Sherman', 6, 0)
+('Oliver', 'Heath', 7, 6)
+('Pat', 'Gildon', 8, 0)
+('Jane', 'Doe', 9, 8)
+
