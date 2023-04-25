@@ -23,8 +23,8 @@
 
 ## Usage
 
-- ![Employee Tracker Application Screen Shot](./public/assets/pics/Note_taker.PNG)
-- [Employee Tracker Application](https://quiet-inlet-16002.herokuapp.com/)
+- ![Employee Tracker Application Screen Shot](./pictures/employee-tracker.PNG)
+- [Employee Tracker Application](https://drive.google.com/file/d/1WDOEhwmkYVyJg2urS8cSE7EkSWcQSbJP/view)
 
 
 ## Credits
