@@ -1,9 +1,10 @@
 const inquirer = require('inquirer')
 const mysql = require('mysql2');
+const firstPrompt = require('./server')
 
 
 // inquirer
-//     .createPromptModule([
+//     .prompt([
 //         {
 //             type: 'list',
 //             message: 'What would you like to do?',
@@ -12,22 +13,38 @@ const mysql = require('mysql2');
 //         }
 //     ])
 
+const db = mysql.createConnection(
+    {
+        host: 'localhost',
+
+        user: 'root',
+
+        password: 'GundamTrooper202',
+        database: 'company_db'
+    },
+    console.log(`Connected to the company_db database.`)
+);
+
 
 //12-11 lesson use dbquery nested in the switch
 function generateResponce (data)  {
-    switch (data.choices) {
+    console.log(data);
+    switch (data.options) {
         case 'view all departments':
+            // viewDepartments()
             db.query('SELECT * FROM department', function (err, results) {
                 if (err) {
-                    throw err;
+                    console.log(err);
                 }
-                console.log(results);
-            });
+                console.table(results);
+            })//.then (()=>{
+                firstPrompt() 
+            //})
             break;
         case 'view all roles':
             db.query('SELECT * FROM role', function (err, results) {
                 if (err) {
-                    throw err;
+                    console.log(err);
                 }
                 console.log(results);
             });
@@ -35,14 +52,14 @@ function generateResponce (data)  {
         case 'view all employees':
             db.query('SELECT * FROM employee', function (err, results) {
                 if (err) {
-                    throw err;
+                    console.log(err);
                 }
                 console.log(results);
             });
             break;
         case 'add a department':
             inquirer
-                .createPromptModule([
+                .prompt([
                     {
                         type: 'input',
                         message: 'what department do you want to add?',
@@ -53,7 +70,7 @@ function generateResponce (data)  {
             break;
         case 'add a role':
             inquirer
-                .createPromptModule([
+                .prompt([
                     {
                         type: 'input',
                         message: 'what role do you want to add?',
@@ -64,7 +81,7 @@ function generateResponce (data)  {
             break;
         case 'add an employee':
             inquirer
-                .createPromptModule([
+                .prompt([
                     {
                         type: 'input',
                         message: 'what is their First name?',
@@ -92,7 +109,7 @@ function generateResponce (data)  {
             break;
         case 'update an employee role':
             inquirer
-                .createPromptModule([
+                .prompt([
                     {
                         type: 'input',
                         message: 'what is their Last name?',
@@ -108,5 +125,9 @@ function generateResponce (data)  {
                 .then(db.query(`UPDATE employee SET role = '${data.role}' were id = ${data.lastName}`))
 
     }
+}
+
+function viewDepartments() {
+    console.log('hello from the other side');
 }
 module.exports = generateResponce

@@ -23,23 +23,23 @@ const db = mysql.createConnection(
     console.log(`Connected to the company_db database.`)
 );
 
+function firstPrompt() {
+    inquirer
+        .prompt([
+            {
+                type: 'list',
+                message: 'What would you like to do?',
+                name: 'options',
+                choices: ['view all departments', 'view all roles', 'view all employees', 'add a department', 'add a role', 'add an employee', 'update an employee role']
+            }
+        ])
+        .then((data) => {
+            generateResponce(data), (err) =>
+                err ? console.log(err) : console.log('success!')
+        })
+}
 
-inquirer
-    .createPromptModule([
-        {
-            type: 'list',
-            message: 'What would you like to do?',
-            name: 'options',
-            choices: ['view all departments', 'view all roles', 'view all employees', 'add a department', 'add a role', 'add an employee', 'update an employee role']
-        }
-    ])
-    .then((data) => {
-        generateResponce(data), (err) =>
-            err ? console.log(err) : console.log('success!')
-    })
-
-
-
+firstPrompt()
 
 app.use((req, res) => {
     res.status(404).end();
@@ -48,3 +48,5 @@ app.use((req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+module.exports = firstPrompt
