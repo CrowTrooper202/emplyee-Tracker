@@ -1,17 +1,8 @@
 const inquirer = require('inquirer')
 const mysql = require('mysql2');
-const firstPrompt = require('./server')
 
 
-// inquirer
-//     .prompt([
-//         {
-//             type: 'list',
-//             message: 'What would you like to do?',
-//             name: 'options',
-//             choices: ['view all departments', 'view all roles', 'view all employees', 'add a department', 'add a role', 'add an employee', 'update an employee role']
-//         }
-//     ])
+
 
 const db = mysql.createConnection(
     {
@@ -26,20 +17,18 @@ const db = mysql.createConnection(
 );
 
 
-//12-11 lesson use dbquery nested in the switch
+
 function generateResponce (data)  {
     console.log(data);
     switch (data.options) {
         case 'view all departments':
-            // viewDepartments()
+            
             db.query('SELECT * FROM department', function (err, results) {
                 if (err) {
                     console.log(err);
                 }
                 console.table(results);
-            })//.then (()=>{
-                firstPrompt() 
-            //})
+            });
             break;
         case 'view all roles':
             db.query('SELECT * FROM role', function (err, results) {
@@ -127,7 +116,5 @@ function generateResponce (data)  {
     }
 }
 
-function viewDepartments() {
-    console.log('hello from the other side');
-}
+
 module.exports = generateResponce
